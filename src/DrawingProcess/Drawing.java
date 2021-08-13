@@ -6,6 +6,7 @@ public class Drawing implements DawingPorcess{
 
     private double partLength,partWidth,partHeight;//零件长宽高初始数据
     private double mouldLength = 0,mouldWidth = 0,mouldHeight = 0;//模具长宽高
+    private double drawingPartLength,drawingPartWidth,drawingPartHeight; //一般拉延零件料片长
     private boolean isAuto;//是否自动化
 
     public Drawing(double partLength, double partWidth, double partHeight, boolean isAuto) {
@@ -13,12 +14,6 @@ public class Drawing implements DawingPorcess{
         this.partWidth = partWidth;
         this.partHeight = partHeight;
         this.isAuto = isAuto;
-    }
-
-    public Drawing(double partLength, double partWidth, double partHeight) {
-        this.partLength = partLength;
-        this.partWidth = partWidth;
-        this.partHeight = partHeight;
     }
 
     /**
@@ -54,12 +49,14 @@ public class Drawing implements DawingPorcess{
      */
     @Override
     public void normalMethod(){
+        drawingPartLength = partLength + partHeight + 140;
+        drawingPartWidth = partWidth + partHeight + 140;
         if (isAuto){
-            mouldLength =  partLength + 900;
-            mouldWidth = partWidth + 700;
+            mouldLength =  drawingPartLength + 900;
+            mouldWidth = drawingPartWidth + 700;
         }else{
-            mouldLength = partLength + 800;
-            mouldWidth = partWidth + 600;
+            mouldLength = drawingPartLength + 800;
+            mouldWidth = drawingPartWidth + 600;
         }
     }
 
@@ -68,12 +65,14 @@ public class Drawing implements DawingPorcess{
      */
     @Override
     public void otherMethod() {
+        drawingPartLength = partLength + partHeight + 140;
+        drawingPartWidth = partWidth + partHeight + 140;
         if (isAuto){
-            mouldLength =  partLength + 1100;
-            mouldWidth = partWidth + 850;
+            mouldLength =  drawingPartLength + 1100;
+            mouldWidth = drawingPartWidth + 850;
         }else{
-            mouldLength = partLength + 1000;
-            mouldWidth = partWidth + 800;
+            mouldLength = drawingPartLength + 1000;
+            mouldWidth = drawingPartWidth + 800;
         }
     }
 
