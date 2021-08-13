@@ -38,6 +38,14 @@ public class Drawing implements DawingPorcess{
             case 2:
                 otherMethod();
                 break;
+            case 3:
+                System.out.println("选择标准（true）或非标（false）CAM方法");
+                boolean isNormal = sc.nextBoolean();
+                CAMCalculation cam = new CAMCalculation(partLength,partWidth,partHeight,isNormal);
+                cam.calculation();
+                mouldLength = cam.getMouldLength();
+                mouldWidth = cam.getMouldWidth();
+                break;
         }
     }
 

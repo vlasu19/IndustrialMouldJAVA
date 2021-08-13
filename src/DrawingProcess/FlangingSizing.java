@@ -33,6 +33,9 @@ public class FlangingSizing implements DawingPorcess{
         int judgement;
         Scanner sc = new Scanner(System.in);
         judgement = sc.nextInt();
+        System.out.println("选择标准（true）或非标（false）CAM方法");
+        boolean isNormal = sc.nextBoolean();
+        CAMCalculation cam = new CAMCalculation(partLength,partWidth,partHeight,isNormal);
         switch (judgement){
             case 1:
                 normalMethod();
@@ -41,10 +44,14 @@ public class FlangingSizing implements DawingPorcess{
                 otherMethod();
                 break;
             case 3:
-                normalCamMethod();
+                cam.normalMethod();
+                mouldLength = cam.getMouldLength();
+                mouldWidth = cam.getMouldWidth();
                 break;
             case 4:
-                interactionCamMethod();
+                cam.interactMethod();
+                mouldLength = cam.getMouldLength();
+                mouldWidth = cam.getMouldWidth();
                 break;
         }
     }

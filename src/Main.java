@@ -2,6 +2,7 @@ import DrawingProcess.CuttingEdgePuchingRoundHoles;
 import DrawingProcess.Drawing;
 import DrawingProcess.FlangingSizing;
 import DrawingProcess.HeightCalculation;
+import PriceCalculation.InnerPartCalculation;
 
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class Main {
         double partLength;//零件长
         double partWidth;//零件宽
         double partHeight;//零件高
+        double price;//模具成本价格
         double mouldLength,mouldWidth,mouldHeight;//模具长宽高
         boolean isAuto;//是否自动化
         boolean isInsert;//是否有镶块
@@ -58,8 +60,17 @@ public class Main {
         heightCalculation.mouldHeightCalculation();
         mouldHeight = heightCalculation.getMouldHeight();
 
-        System.out.println(mouldLength + "," + mouldWidth + "," + mouldHeight);
+        System.out.println("模具长度：" + mouldLength + "\n模具宽度：" + mouldWidth + "\n模具高度：" + mouldHeight);
 
+        //内板件模具成本计算
+        InnerPartCalculation innerPartCalculation = new InnerPartCalculation();
+        innerPartCalculation.setMouldLength(mouldLength);
+        innerPartCalculation.setMouldWidth(mouldWidth);
+        innerPartCalculation.priceCalculation();
+
+        price = innerPartCalculation.getPrice();
+
+        System.out.println("模具成本价格：" + price + "元");
 
     }
 
